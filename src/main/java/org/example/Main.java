@@ -12,23 +12,13 @@ class Program
        try(BufferedReader br = new BufferedReader(new FileReader("C:\\nikita\\Coding\\input.txt.txt")))
         {
             String buf ;
-            String str = br.readLine();
+            String str;
 
             while((buf=br.readLine())!= null)
             {
-                str += (" " + buf );
-            }
-            System.out.println(str);
-            System.out.println(str);
-            String[] nums = str.split(" ");
-            for(int i = 0 ; i < nums.length ; i++)
-            {
-                switch(nums[i])
+
+                switch(buf)
                 {
-                    case "push":
-                        i++;
-                        stack.push(Integer.parseInt(nums[i]));
-                        break;
                     case "back":
                         stack.show();
                         break;
@@ -44,16 +34,24 @@ class Program
                     case "exit":
                         System.out.println("bye");
                         System.exit(0);
+                        break;
+                    default:
+                        String[] nums = buf.split(" ");
+                        if(nums[0].equals("push"))
+                        {
+                            stack.push(Integer.parseInt(nums[1]));
+                        }
+                        break;
+
                 }
             }
+
+
         }
         catch (IOException ex)
         {
             ex.getMessage();
         }
-
-
-
 
     }
 }
